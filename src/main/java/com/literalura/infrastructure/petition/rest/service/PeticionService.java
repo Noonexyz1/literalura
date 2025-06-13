@@ -12,10 +12,7 @@ import java.net.http.HttpResponse;
 @Component
 public class PeticionService {
 
-    //TODO, definir las URLS y demas atributos necesarios para hacer la peticion
-
-
-
+    //TODO, Si es necesario definir las URLS y demas atributos necesarios para hacer la peticion
 
     public String obtenerDatos(String url){
         HttpClient client = HttpClient.newHttpClient();

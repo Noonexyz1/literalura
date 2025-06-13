@@ -12,7 +12,7 @@ public class TerminalConfig {
     public CommandLineRunner terminalCommandLineRunner(TerminalApp terminalApp) {
         return args -> {
 
-            terminalApp.run();
+            terminalApp.iniciarApp();
 
             // Si necesitas acceder a los argumentos de línea de comandos
             /*if (args.length > 0) {
