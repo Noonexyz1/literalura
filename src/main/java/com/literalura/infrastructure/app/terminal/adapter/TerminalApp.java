@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 @Component
 public class TerminalApp {
@@ -17,20 +18,28 @@ public class TerminalApp {
     private final List<String> listaDeOpciones = new ArrayList<>();
 
 
-
     public void iniciarApp() {
         //TODO, hacer la aplicaciones de consola
 
-
         this.iniciarListaDeOpciones();
 
+        boolean opcionSalir = true;
+        do {
+            System.out.println("-------------- Lista de opciones ----------------");
+            listaDeOpciones.forEach(System.out::println);
 
-        System.out.println("Mostramos la lista de opciones---------");
-        listaDeOpciones.forEach(System.out::println);
+            System.out.println("-------------- Ingrese una opcion ----------------");
+            int opcion = new Scanner(System.in).nextInt();
+
+            if (opcion == 0) {
+                opcionSalir = false;
+            }
+
+        } while (opcionSalir);
+
+        System.out.println("--------------- Fin del programa -----------------\n");
+
     }
-
-
-
 
     public void iniciarListaDeOpciones() {
         this.listaDeOpciones.add("1.- Buscar libro por titulo");
