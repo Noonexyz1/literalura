@@ -1,0 +1,3 @@
+REQUERIMIENTO FUNCIONALES
+
+En este paquete estan mis Casos de Uso del Cliente

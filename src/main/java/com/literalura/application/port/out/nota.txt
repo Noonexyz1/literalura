@@ -1,0 +1,5 @@
+REQUERIMIENTO NO FUNCIONALES (hasta comprenderlo mejor :) )
+
+En este paquete abstraemos dividiendo los metodos de los Casos de Uso
+en paquetes que representen Funcionalidades Externas, osea, t0do apartir de
+los casos de uso haciendo uso de mi poder de abstraccion
