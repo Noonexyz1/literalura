@@ -1,6 +1,7 @@
 package com.literalura.infrastructure.app.terminal.adapter;
 
 import com.literalura.application.port.in.Literalura;
+import com.literalura.domain.model.Autor;
 import com.literalura.domain.model.Libro;
 import com.literalura.infrastructure.app.terminal.model.OpcionModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,29 +56,67 @@ public class TerminalApp {
 
     //Yo estoy pasando estos comportamientos a mi lista de OpcionModel, asi es mas sencillo empaquetar logica :)
     public void buscarLibroPorTitulo() {
+        //Esta es la forma correctar para utilizar SERVICIOS con opciones que mostrar
         String nombreLibro = new Scanner(System.in).next();
         Libro libro = this.literalura.buscarLibro(nombreLibro);
         System.out.println(libro);
     }
 
     public void listarLibros() {
-        //TODO
-        System.out.println("LISTAMOS TODOS LOS LIBROS :)");
+        this.literalura.listarLibros().forEach(x -> {
+            //TODO. mostramos cada libro por pantalla con un formato lindo
+        });
     }
 
     public void listarAutores() {
-        //TODO
+        this.literalura.listarAutores().forEach(x -> {
+            //TODO. mostramos cada Autor por pantalla con un formato lindo
+        });
     }
 
     public void listarAutoresVivos() {
-        //TODO
+        int anio = new Scanner(System.in).nextInt();
+        this.literalura.listarAutoresVivos(anio).forEach(x -> {
+            //TODO. mostramos cada Autor por pantalla con un formato lindo
+        });
     }
 
     public void listarLibrosPorIdioma() {
-        //TODO
+        String codigoIdioma = new Scanner(System.in).next();
+        this.literalura.listarLibros(codigoIdioma).forEach(x -> {
+            //TODO. mostramos cada Libro por pantalla con un formato lindo
+        });
     }
 
     public void terminarApp() {
         this.opcionSalir = false;
+    }
+
+    public void mostrarLibroFormat(Libro libro) {
+        String datos = String.format("""
+                    Titulo: %s
+                    Autor: %s
+                    Idioma: %s
+                    Numero de descargas: %f
+                """,
+                libro.getTitulo(), "Mostrar Autor", libro.getIdioma(), libro.getNumDescargas());
+
+        System.out.println("---------- LIBRO ----------");
+        System.out.println(datos);
+        System.out.println("---------------------------");
+    }
+
+    public void mostrarAutorFormat(Autor autor) {
+        String datos = String.format("""
+                    Autor: %s
+                    Fecha de nacimiento: %s
+                    Fecha de fallecimiento: %s
+                    Libros: [%s]
+                """,
+                autor.getNombre(), autor.getFechaNace(), autor.getFechaFallece(), autor.getIdLibro());
+
+        System.out.println("---------- AUTOR ----------");
+        System.out.println(datos);
+        System.out.println("---------------------------");
     }
 }
