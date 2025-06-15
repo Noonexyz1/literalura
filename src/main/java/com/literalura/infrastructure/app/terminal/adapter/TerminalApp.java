@@ -59,36 +59,29 @@ public class TerminalApp {
         //Esta es la forma correctar para utilizar SERVICIOS con opciones que mostrar
         String nombreLibro = new Scanner(System.in).next();
         Libro libro = this.literalura.buscarLibro(nombreLibro);
-        System.out.println(libro);
+        this.mostrarLibroFormat(libro);
     }
 
     public void listarLibros() {
-        this.literalura.listarLibros().forEach(x -> {
-            //TODO. mostramos cada libro por pantalla con un formato lindo
-        });
+        this.literalura.listarLibros().forEach(this::mostrarLibroFormat);
     }
 
     public void listarAutores() {
-        this.literalura.listarAutores().forEach(x -> {
-            //TODO. mostramos cada Autor por pantalla con un formato lindo
-        });
+        this.literalura.listarAutores().forEach(this::mostrarAutorFormat);
     }
 
     public void listarAutoresVivos() {
         int anio = new Scanner(System.in).nextInt();
-        this.literalura.listarAutoresVivos(anio).forEach(x -> {
-            //TODO. mostramos cada Autor por pantalla con un formato lindo
-        });
+        this.literalura.listarAutoresVivos(anio).forEach(this::mostrarAutorFormat);
     }
 
     public void listarLibrosPorIdioma() {
         String codigoIdioma = new Scanner(System.in).next();
-        this.literalura.listarLibros(codigoIdioma).forEach(x -> {
-            //TODO. mostramos cada Libro por pantalla con un formato lindo
-        });
+        this.literalura.listarLibros(codigoIdioma).forEach(this::mostrarLibroFormat);
     }
 
     public void terminarApp() {
+        //Este valor los necesito en GLOBAL para que pueda terminar la ejecucion desde otro metodo fuera
         this.opcionSalir = false;
     }
 
