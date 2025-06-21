@@ -23,10 +23,8 @@ public class TerminalApp {
 
 
     public void iniciarApp() {
-        //TODO, hacer la aplicaciones de consola
 
         this.iniciarListaDeOpciones();
-
 
         do {
             System.out.println("-------------- Lista de opciones ----------------");
@@ -56,7 +54,8 @@ public class TerminalApp {
 
     //Yo estoy pasando estos comportamientos a mi lista de OpcionModel, asi es mas sencillo empaquetar logica :)
     public void buscarLibroPorTitulo() {
-        //Esta es la forma correctar para utilizar SERVICIOS con opciones que mostrar
+        //Esta es la forma correcta para utilizar SERVICIOS con opciones que mostrar
+        System.out.println("Ingrese el nombre del Libro");
         String nombreLibro = new Scanner(System.in).next();
         Libro libro = this.literalura.buscarLibro(nombreLibro);
         this.mostrarLibroFormat(libro);
@@ -84,6 +83,7 @@ public class TerminalApp {
         //Este valor los necesito en GLOBAL para que pueda terminar la ejecucion desde otro metodo fuera
         this.opcionSalir = false;
     }
+
 
     public void mostrarLibroFormat(Libro libro) {
         String datos = String.format("""
