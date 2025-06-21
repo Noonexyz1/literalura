@@ -1,0 +1,6 @@
+# Ignorar directorios de compilación
+/target/
+
+# Ignorar archivos de IDE
+.idea/
+.vscode/

@@ -6,7 +6,13 @@ import com.literalura.infrastructure.petition.rest.data.LibroData;
 public class MaperPeticion {
 
     public static Libro fromLibroDataToLibro(LibroData libroData) {
-        //TODO, mapear estos campos de LibroData a Libro
-        return new Libro();
+        //Aqui debo mapear los modelos de datos segun requerimineto, observar esto,
+        // libroData.idioma().toString(), se entiende?
+        return new Libro(
+                libroData.idLibro(),
+                libroData.titulo(),
+                libroData.idioma().toString(),
+                libroData.numDescargas()
+        );
     }
 }
