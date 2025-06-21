@@ -17,10 +17,23 @@ public class MaperPersistence {
     }
 
     public static Libro fromLibroEntityToLibro(LibroEntity libroEntity) {
-        return new Libro();
+        return new Libro(
+                libroEntity.getIdLibro(),
+                libroEntity.getTitulo(),
+                libroEntity.getIdioma(),
+                libroEntity.getNumDescargas()
+        );
     }
 
     public static LibroEntity fromLibroToLibroEntitity(Libro libro) {
-        return new LibroEntity();
+        //Los pongo en null porque esto ya es una clase Entity, esos campos solamente fueron
+        //para mapear campos (los campos de relacion).
+        return new LibroEntity(
+                null,
+                libro.getTitulo(),
+                libro.getIdioma(),
+                libro.getNumDescargas(),
+                null
+        );
     }
 }

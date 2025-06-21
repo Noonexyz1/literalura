@@ -90,8 +90,7 @@ public class TerminalApp {
                     Titulo: %s
                     Autor: %s
                     Idioma: %s
-                    Numero de descargas: %f
-                """,
+                    Numero de descargas: %f""",
                 libro.getTitulo(), "Mostrar Autor", libro.getIdioma(), libro.getNumDescargas());
 
         System.out.println("---------- LIBRO ----------");
@@ -104,8 +103,7 @@ public class TerminalApp {
                     Autor: %s
                     Fecha de nacimiento: %s
                     Fecha de fallecimiento: %s
-                    Libros: [%s]
-                """,
+                    Libros: [%s]""",
                 autor.getNombre(), autor.getFechaNace(), autor.getFechaFallece(), autor.getIdLibro());
 
         System.out.println("---------- AUTOR ----------");
