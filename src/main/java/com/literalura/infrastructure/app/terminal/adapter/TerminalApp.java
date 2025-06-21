@@ -55,8 +55,8 @@ public class TerminalApp {
     //Yo estoy pasando estos comportamientos a mi lista de OpcionModel, asi es mas sencillo empaquetar logica :)
     public void buscarLibroPorTitulo() {
         //Esta es la forma correcta para utilizar SERVICIOS con opciones que mostrar
-        System.out.println("Ingrese el nombre del Libro");
-        String nombreLibro = new Scanner(System.in).next();
+        System.out.println("Ingrese el nombre del Libro:");
+        String nombreLibro = new Scanner(System.in).nextLine();
         Libro libro = this.literalura.buscarLibro(nombreLibro);
         this.mostrarLibroFormat(libro);
     }
