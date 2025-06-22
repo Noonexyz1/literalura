@@ -70,11 +70,13 @@ public class TerminalApp {
     }
 
     public void listarAutoresVivos() {
+        System.out.println("Ingrese anio:");
         int anio = new Scanner(System.in).nextInt();
         this.literalura.listarAutoresVivos(anio).forEach(this::mostrarAutorFormat);
     }
 
     public void listarLibrosPorIdioma() {
+        System.out.println("Ingrese codigo de idioma:");
         String codigoIdioma = new Scanner(System.in).next();
         this.literalura.listarLibros(codigoIdioma).forEach(this::mostrarLibroFormat);
     }
