@@ -31,11 +31,13 @@ public class MaperPersistence {
     }
 
     public static Libro fromLibroEntityToLibro(LibroEntity libroEntity) {
+        //LibroEntity no tiene al camo lista de Autores que tiene Libro, entonces pondre null
         return new Libro(
                 libroEntity.getIdLibro(),
                 libroEntity.getTitulo(),
                 libroEntity.getIdioma(),
-                libroEntity.getNumDescargas()
+                libroEntity.getNumDescargas(),
+                null
         );
     }
 

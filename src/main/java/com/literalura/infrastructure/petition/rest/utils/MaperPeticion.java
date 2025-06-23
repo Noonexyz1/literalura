@@ -14,7 +14,10 @@ public class MaperPeticion {
                 libroData.idLibro(),
                 libroData.titulo(),
                 libroData.idioma().toString(),
-                libroData.numDescargas()
+                libroData.numDescargas(),
+                libroData.autores().stream()
+                        .map(AutorData::nombre)
+                        .toList()
         );
     }
 

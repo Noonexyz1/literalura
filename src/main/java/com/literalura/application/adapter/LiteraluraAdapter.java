@@ -44,13 +44,28 @@ public class LiteraluraAdapter implements Literalura {
             autorAbs.guardarAutor(x);
         });
 
+        //Establecemos la lista de autores que tiene este libro persistido
+        libroRegistrado.setAutores(
+                listaDeAutoresLibro.stream()
+                        .map(Autor::getNombre)
+                        .toList());
+
         //Devolvemos el libro persistido
         return libroRegistrado;
     }
 
     @Override
     public List<Libro> listarLibros() {
-        return libroAbs.listarLibros();
+        List<Libro> libros = libroAbs.listarLibros();
+        return libros.stream()
+                .map(x -> {
+                    List<Autor> listaAutores = autorAbs.listarAutoresPorLibro(x);
+                    x.setAutores(
+                            listaAutores.stream().map(Autor::getNombre).toList()
+                    );
+                    return x;
+                })
+                .toList();
     }
 
     @Override

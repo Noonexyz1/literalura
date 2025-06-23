@@ -1,6 +1,7 @@
 package com.literalura.application.port.out.persistence;
 
 import com.literalura.domain.model.Autor;
+import com.literalura.domain.model.Libro;
 
 import java.util.List;
 
@@ -9,4 +10,5 @@ public interface AutorAbs {
     List<Autor> listarAutores();
     List<Autor> listarAutoresVivos(int anio);
     Autor guardarAutor(Autor autor);
+    List<Autor> listarAutoresPorLibro(Libro libro);
 }

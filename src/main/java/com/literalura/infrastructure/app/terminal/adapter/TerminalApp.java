@@ -93,7 +93,7 @@ public class TerminalApp {
                     Autor: %s
                     Idioma: %s
                     Numero de descargas: %f""",
-                libro.getTitulo(), "Mostrar Autor", libro.getIdioma(), libro.getNumDescargas());
+                libro.getTitulo(), libro.getAutores().toString(), libro.getIdioma(), libro.getNumDescargas());
 
         System.out.println("---------- LIBRO ----------");
         System.out.println(datos);
