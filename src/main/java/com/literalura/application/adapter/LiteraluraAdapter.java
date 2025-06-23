@@ -36,6 +36,14 @@ public class LiteraluraAdapter implements Literalura {
         //Persistimos en algun lugar
         Libro libroRegistrado = libroAbs.resgistrarLibro(libro);
 
+        //Buscamos y traemos la lista de autores del libro encontrado
+        List<Autor> listaDeAutoresLibro = this.peticionAbs.buscarAutores(tituloLibro);
+
+        listaDeAutoresLibro.forEach(x -> {
+            x.setIdLibro(libroRegistrado.getIdLibro());
+            autorAbs.guardarAutor(x);
+        });
+
         //Devolvemos el libro persistido
         return libroRegistrado;
     }

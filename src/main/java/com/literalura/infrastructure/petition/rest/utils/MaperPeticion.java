@@ -1,6 +1,8 @@
 package com.literalura.infrastructure.petition.rest.utils;
 
+import com.literalura.domain.model.Autor;
 import com.literalura.domain.model.Libro;
+import com.literalura.infrastructure.petition.rest.data.AutorData;
 import com.literalura.infrastructure.petition.rest.data.LibroData;
 
 public class MaperPeticion {
@@ -13,6 +15,16 @@ public class MaperPeticion {
                 libroData.titulo(),
                 libroData.idioma().toString(),
                 libroData.numDescargas()
+        );
+    }
+
+    public static Autor fromAutorDataToAutor(AutorData autorData) {
+        return new Autor(
+                null,
+                autorData.nombre(),
+                autorData.fechaNace().toString(),
+                autorData.fechaFallece().toString(),
+                null
         );
     }
 }

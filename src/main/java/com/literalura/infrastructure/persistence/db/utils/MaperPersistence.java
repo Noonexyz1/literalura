@@ -5,15 +5,29 @@ import com.literalura.domain.model.Libro;
 import com.literalura.infrastructure.persistence.db.entity.AutorEntity;
 import com.literalura.infrastructure.persistence.db.entity.LibroEntity;
 
-//TODO, hacer todos los mapeos
 public class MaperPersistence {
 
     public static Autor fromAutorEntitityToAutor(AutorEntity autorEntity) {
-        return new Autor();
+        return new Autor(
+                autorEntity.getIdAutor(),
+                autorEntity.getNombre(),
+                autorEntity.getFechaNace().toString(),
+                autorEntity.getFechaFallece().toString(),
+                autorEntity.getIdLibro().getIdLibro()
+        );
     }
 
     public static AutorEntity fromAutorToAutorEntitity(Autor autor) {
-        return new AutorEntity();
+        LibroEntity libroEntity = new LibroEntity();
+        libroEntity.setIdLibro(autor.getIdLibro());
+
+        return new AutorEntity(
+                autor.getIdAutor(),
+                autor.getNombre(),
+                Long.valueOf(autor.getFechaNace()),
+                Long.valueOf(autor.getFechaFallece()),
+                libroEntity
+        );
     }
 
     public static Libro fromLibroEntityToLibro(LibroEntity libroEntity) {

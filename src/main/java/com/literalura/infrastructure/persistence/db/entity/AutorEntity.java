@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 public class AutorEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idAutor;
     private String nombre;
     private Long fechaNace;

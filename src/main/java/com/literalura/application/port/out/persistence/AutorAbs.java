@@ -8,4 +8,5 @@ import java.util.List;
 public interface AutorAbs {
     List<Autor> listarAutores();
     List<Autor> listarAutoresVivos(int anio);
+    Autor guardarAutor(Autor autor);
 }
