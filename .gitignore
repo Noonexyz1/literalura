@@ -4,3 +4,6 @@
 # Ignorar archivos de IDE
 .idea/
 .vscode/
+
+# Ignorar el script de inicialización del espacio de trabajo
+workspace_init.sh
