@@ -1,0 +1,10 @@
+Pensar Primero en: Debo disenar el modelo de datos de tal empresa con sus relaciones con
+otros modelos de datos, entonces, luego busbo un mecanismo para poder persistir
+este modelo como una BD o lo que fuera.
+
+Dicho esto, entonces el modelo de datos de mi dominio SI tiene que ser identico
+que el de la BD u otro metodo/modelo de persistencia, porque, la BD por ejemplo
+es solo un mecanismo, porque los modelos o las apps no deben guardar ESTADOS de objetos,
+eso solo lo hace una BD o persistencia, entonces interactuar con estos mdoelos de domio
+desde las reglas de negocio es mucho mas facil. no importa que tan anidados esten estos
+modelos de datos.
