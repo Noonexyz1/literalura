@@ -21,7 +21,7 @@ public class AutorAdapter implements AutorAbs {
     @Override
     public List<Autor> listarAutores() {
         return autorRepository.findAll().stream()
-                .map(MaperPersistence::fromAutorEntitityToAutor)
+                .map(MaperPersistence::fromAutorEntityToAutor)
                 .toList();
     }
 
@@ -29,26 +29,26 @@ public class AutorAdapter implements AutorAbs {
     public List<Autor> listarAutoresVivos(int anio) {
         //TODO, buscar por columa anio
         return autorRepository.findAll().stream()
-                .map(MaperPersistence::fromAutorEntitityToAutor)
+                .map(MaperPersistence::fromAutorEntityToAutor)
                 .toList();
     }
 
     @Override
     public Autor guardarAutor(Autor autor) {
-        AutorEntity autorToSave = MaperPersistence.fromAutorToAutorEntitity(autor);
-        // autorToSave se va ha mutar por jpa despues de hacer save() en siguiente codigo
+        AutorEntity autorToSave = MaperPersistence.fromAutorToAutorEntity(autor);
+        // autorToSave se va ha mutar por jpa despues de hacer save() en el siguiente codigo
         // Medio extranio pero lo hace, interesante
         AutorEntity autorSaved = this.autorRepository.save(autorToSave);
-        return MaperPersistence.fromAutorEntitityToAutor(autorSaved);
+        return MaperPersistence.fromAutorEntityToAutor(autorSaved);
     }
 
     @Override
     public List<Autor> listarAutoresPorLibro(Libro libro) {
-        LibroEntity libroEntity = MaperPersistence.fromLibroToLibroEntitity(libro);
+        LibroEntity libroEntity = MaperPersistence.fromLibroToLibroEntity(libro);
         libroEntity.setIdLibro(libro.getIdLibro());
         List<AutorEntity> listaAutoresEntity = this.autorRepository.findByIdLibro(libroEntity);
         return listaAutoresEntity.stream()
-                .map(MaperPersistence::fromAutorEntitityToAutor)
+                .map(MaperPersistence::fromAutorEntityToAutor)
                 .toList();
     }
 }

@@ -10,5 +10,4 @@ import java.util.List;
 @Repository
 public interface AutorRepository extends JpaRepository<AutorEntity, Long> {
     List<AutorEntity> findByIdLibro(LibroEntity libroEntity);
-    //TODO, hacer los query metods de Autor
 }

@@ -1,6 +1,5 @@
 package com.literalura.domain.model;
 
-import java.util.List;
 
 public class Libro {
     private Long idLibro;
@@ -8,28 +7,25 @@ public class Libro {
     private String idioma;
     private double numDescargas;
 
-    private List<String> autores;
+    //private List<Autores> autores;      Esto es implicito :D
 
 
     public Libro() {
 
     }
 
-    public Libro(Long idLibro, String titulo, String idioma, double numDescargas, List<String> autores) {
+    public Libro(
+            Long idLibro,
+            String titulo,
+            String idioma,
+            double numDescargas
+    ) {
         this.idLibro = idLibro;
         this.titulo = titulo;
         this.idioma = idioma;
         this.numDescargas = numDescargas;
-        this.autores = autores;
     }
 
-    public List<String> getAutores() {
-        return autores;
-    }
-
-    public void setAutores(List<String> autores) {
-        this.autores = autores;
-    }
 
     public Long getIdLibro() {
         return idLibro;

@@ -28,27 +28,31 @@ public class LiteraluraAdapter implements Literalura {
         this.libroAbs = libroAbs;
     }
 
+
+    /*
+    * Yo como Caso de Uso, no deberia usar mapeadores, asi se ve mas limpio el codigo
+    * */
+
+
     @Override
     public Libro buscarLibro(String tituloLibro) {
-        //Peticion a un sistema externo alguno
+        //Peticion a un sistema externo alguno API
         Libro libro = peticionAbs.buscarLibro(tituloLibro);
 
         //Persistimos en algun lugar
         Libro libroRegistrado = libroAbs.resgistrarLibro(libro);
 
-        //Buscamos y traemos la lista de autores del libro encontrado
+        //Buscamos y traemos la lista de autores del libro encontrado a nuestra API
         List<Autor> listaDeAutoresLibro = this.peticionAbs.buscarAutores(tituloLibro);
 
         listaDeAutoresLibro.forEach(x -> {
-            x.setIdLibro(libroRegistrado.getIdLibro());
-            autorAbs.guardarAutor(x);
-        });
 
-        //Establecemos la lista de autores que tiene este libro persistido
-        libroRegistrado.setAutores(
-                listaDeAutoresLibro.stream()
-                        .map(Autor::getNombre)
-                        .toList());
+            Libro libroLink = new Libro();
+            libroLink.setIdLibro(libroRegistrado.getIdLibro());
+            x.setLibro(libroLink);
+            autorAbs.guardarAutor(x);
+
+        });
 
         //Devolvemos el libro persistido
         return libroRegistrado;
@@ -56,16 +60,7 @@ public class LiteraluraAdapter implements Literalura {
 
     @Override
     public List<Libro> listarLibros() {
-        List<Libro> libros = libroAbs.listarLibros();
-        return libros.stream()
-                .map(x -> {
-                    List<Autor> listaAutores = autorAbs.listarAutoresPorLibro(x);
-                    x.setAutores(
-                            listaAutores.stream().map(Autor::getNombre).toList()
-                    );
-                    return x;
-                })
-                .toList();
+        return libroAbs.listarLibros();
     }
 
     @Override
@@ -81,5 +76,10 @@ public class LiteraluraAdapter implements Literalura {
     @Override
     public List<Libro> listarLibros(String codigoIdioma) {
         return libroAbs.listarLibros(codigoIdioma);
+    }
+
+    @Override
+    public List<Autor> listarAutoresPorLibro(Libro libro) {
+        return this.autorAbs.listarAutoresPorLibro(libro);
     }
 }

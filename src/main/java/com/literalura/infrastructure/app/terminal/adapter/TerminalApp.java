@@ -58,11 +58,15 @@ public class TerminalApp {
         System.out.println("Ingrese el nombre del Libro:");
         String nombreLibro = new Scanner(System.in).nextLine();
         Libro libro = this.literalura.buscarLibro(nombreLibro);
-        this.mostrarLibroFormat(libro);
+        List<Autor> listaAutores = this.literalura.listarAutoresPorLibro(libro);
+        this.mostrarLibroFormat(libro, listaAutores);
     }
 
     public void listarLibros() {
-        this.literalura.listarLibros().forEach(this::mostrarLibroFormat);
+        this.literalura.listarLibros().forEach(x -> {
+            List<Autor> listaAutores = this.literalura.listarAutoresPorLibro(x);
+            this.mostrarLibroFormat(x, listaAutores);
+        });
     }
 
     public void listarAutores() {
@@ -78,7 +82,10 @@ public class TerminalApp {
     public void listarLibrosPorIdioma() {
         System.out.println("Ingrese codigo de idioma:");
         String codigoIdioma = new Scanner(System.in).next();
-        this.literalura.listarLibros(codigoIdioma).forEach(this::mostrarLibroFormat);
+        this.literalura.listarLibros(codigoIdioma).forEach(x -> {
+            List<Autor> listaAutores = this.literalura.listarAutoresPorLibro(x);
+            this.mostrarLibroFormat(x, listaAutores);
+        });
     }
 
     public void terminarApp() {
@@ -86,14 +93,19 @@ public class TerminalApp {
         this.opcionSalir = false;
     }
 
-
-    public void mostrarLibroFormat(Libro libro) {
+    //Mostrar Libro con sus Autores respectivos
+    public void mostrarLibroFormat(Libro libro, List<Autor> listaAutores) {
         String datos = String.format("""
                     Titulo: %s
                     Autor: %s
                     Idioma: %s
                     Numero de descargas: %f""",
-                libro.getTitulo(), libro.getAutores().toString(), libro.getIdioma(), libro.getNumDescargas());
+                libro.getTitulo(),
+                listaAutores.stream()
+                        .map(Autor::getNombre)
+                        .toList(),
+                libro.getIdioma(),
+                libro.getNumDescargas());
 
         System.out.println("---------- LIBRO ----------");
         System.out.println(datos);
@@ -106,7 +118,7 @@ public class TerminalApp {
                     Fecha de nacimiento: %s
                     Fecha de fallecimiento: %s
                     Libros: [%s]""",
-                autor.getNombre(), autor.getFechaNace(), autor.getFechaFallece(), autor.getIdLibro());
+                autor.getNombre(), autor.getFechaNace(), autor.getFechaFallece(), autor.getLibro().getTitulo());
 
         System.out.println("---------- AUTOR ----------");
         System.out.println(datos);

@@ -3,22 +3,30 @@ package com.literalura.domain.model;
 public class Autor {
     private Long idAutor;
     private String nombre;
-    private String fechaNace;
-    private String fechaFallece;
+    private Long fechaNace;
+    private Long fechaFallece;
 
-    private Long idLibro;
+    //Este campo si se va ha mostrar en la peristencia por ser de N:1
+    //Que viene de un Libro tiene muchos Autores
+    private Libro libro;
 
 
     public Autor() {
 
     }
 
-    public Autor(Long idAutor, String nombre, String fechaNace, String fechaFallece, Long idLibro) {
+    public Autor(
+            Long idAutor,
+            String nombre,
+            Long fechaNace,
+            Long fechaFallece,
+            Libro libro
+    ) {
         this.idAutor = idAutor;
         this.nombre = nombre;
         this.fechaNace = fechaNace;
         this.fechaFallece = fechaFallece;
-        this.idLibro = idLibro;
+        this.libro = libro;
     }
 
 
@@ -38,27 +46,27 @@ public class Autor {
         this.nombre = nombre;
     }
 
-    public String getFechaNace() {
+    public Long getFechaNace() {
         return fechaNace;
     }
 
-    public void setFechaNace(String fechaNace) {
+    public void setFechaNace(Long fechaNace) {
         this.fechaNace = fechaNace;
     }
 
-    public String getFechaFallece() {
+    public Long getFechaFallece() {
         return fechaFallece;
     }
 
-    public void setFechaFallece(String fechaFallece) {
+    public void setFechaFallece(Long fechaFallece) {
         this.fechaFallece = fechaFallece;
     }
 
-    public Long getIdLibro() {
-        return idLibro;
+    public Libro getLibro() {
+        return libro;
     }
 
-    public void setIdLibro(Long idLibro) {
-        this.idLibro = idLibro;
+    public void setLibro(Libro libro) {
+        this.libro = libro;
     }
 }

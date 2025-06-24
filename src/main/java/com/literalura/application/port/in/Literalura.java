@@ -12,4 +12,5 @@ public interface Literalura {
     List<Autor> listarAutores();
     List<Autor> listarAutoresVivos(int anio);
     List<Libro> listarLibros(String codigoIdioma);
+    List<Autor> listarAutoresPorLibro(Libro libro);
 }

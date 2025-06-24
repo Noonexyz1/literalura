@@ -18,8 +18,12 @@ public class LibroAdapter implements LibroAbs {
 
     @Override
     public Libro resgistrarLibro(Libro libro) {
-        LibroEntity libroEntity = libroRepository
-                .save(MaperPersistence.fromLibroToLibroEntitity(libro));
+        LibroEntity libroEntityToSave = MaperPersistence.fromLibroToLibroEntity(libro);
+
+        //Si se trata de registrar un nuevo libro, entonces el ID deberia ser NULL
+        libroEntityToSave.setIdLibro(null);
+
+        LibroEntity libroEntity = libroRepository.save(libroEntityToSave);
         return MaperPersistence.fromLibroEntityToLibro(libroEntity);
     }
 
