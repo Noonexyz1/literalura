@@ -70,7 +70,7 @@ public class LiteraluraAdapter implements Literalura {
         return autorAbs.listarAutores();
     }
 
-    //Este metodo es para hacer consultas externas a otra API
+    //Este metodo es para traer datos persistidos
     @Override
     public List<Autor> listarAutoresVivos(int anio) {
         return autorAbs.listarAutoresVivos(anio);

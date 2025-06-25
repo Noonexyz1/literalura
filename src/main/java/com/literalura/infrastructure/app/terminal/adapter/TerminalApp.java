@@ -47,7 +47,7 @@ public class TerminalApp {
         this.listaDeOpciones.add(new OpcionModel(1, "1.- Buscar libro por titulo Api", this::buscarLibroPorTitulo));
         this.listaDeOpciones.add(new OpcionModel(2, "2.- Listar libros persistidos", this::listarLibros));
         this.listaDeOpciones.add(new OpcionModel(3, "3.- Listar autores persistidos", this::listarAutores));
-        this.listaDeOpciones.add(new OpcionModel(4, "4.- Listar autores vivos por anio Api", this:: listarAutoresVivos));
+        this.listaDeOpciones.add(new OpcionModel(4, "4.- Listar autores vivos por anio", this::listarAutoresVivos));
         this.listaDeOpciones.add(new OpcionModel(5, "5.- Listar libros por idioma Api", this::listarLibrosPorIdioma));
         this.listaDeOpciones.add(new OpcionModel(0, "0.- Salir", this::terminarApp));
     }

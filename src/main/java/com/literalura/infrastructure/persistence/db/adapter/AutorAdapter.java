@@ -27,8 +27,7 @@ public class AutorAdapter implements AutorAbs {
 
     @Override
     public List<Autor> listarAutoresVivos(int anio) {
-        //TODO, buscar por columa anio
-        return autorRepository.findAll().stream()
+        return autorRepository.listarAutoresVivos(anio).stream()
                 .map(MaperPersistence::fromAutorEntityToAutor)
                 .toList();
     }
