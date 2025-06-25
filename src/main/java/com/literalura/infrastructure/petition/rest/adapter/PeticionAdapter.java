@@ -79,6 +79,25 @@ public class PeticionAdapter implements PeticionAbs {
                 .toList();
     }
 
+    @Override
+    public List<Libro> buscarLibroPorIdioma(String codigoIdioma) {
+        //Hacemos la peticion al sistema externo
+        String resultado = this.obtenerDatos(URL_BASE + "?languages=" + codigoIdioma);
+
+        //Al parece necesariamente voy a tener que mapear Modelos Anidados, ya no, porque tengo un ResultData que me trae
+        //el campo que realmente necesito, Entra a ResultaData para nortarlo
+        //Convertir el resultado Sptring/Json a un modelo de datos
+        ResultData libroData = convierteDatos.convierteDatos(resultado, ResultData.class);
+
+        //Buscamos en la lista el libro que se nos pasa por parametro
+        List<LibroData> librosData = libroData.listaLibros();
+
+        //Retornamos el valor mapeados
+        return librosData.stream()
+                .map(MaperPeticion::fromLibroDataToLibro)
+                .toList();
+    }
+
     private String obtenerDatos(String url){
         HttpClient client = HttpClient.newHttpClient();
 

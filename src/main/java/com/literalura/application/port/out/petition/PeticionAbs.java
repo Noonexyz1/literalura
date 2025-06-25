@@ -10,4 +10,5 @@ import java.util.List;
 public interface PeticionAbs {
     Libro buscarLibro(String tituloLibro);
     List<Autor> buscarAutores(String tituloLibro);
+    List<Libro> buscarLibroPorIdioma(String codigoIdioma);
 }
