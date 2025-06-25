@@ -16,7 +16,7 @@ public class MaperPeticion {
 
                 //Debo tener mucho cuidado con esto, porque en el dominio este campo es String
                 //Y lo que me viene de la API es una Lista de String, en este caso idiomas
-                libroData.idioma().toString(),
+                libroData.idioma().getFirst(),
 
                 libroData.numDescargas()
         );

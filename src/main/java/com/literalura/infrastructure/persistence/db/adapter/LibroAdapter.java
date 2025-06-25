@@ -8,6 +8,7 @@ import com.literalura.infrastructure.persistence.db.utils.MaperPersistence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Component
@@ -36,8 +37,7 @@ public class LibroAdapter implements LibroAbs {
 
     @Override
     public List<Libro> listarLibros(String codigoIdioma) {
-        //TODO, litar libros por columna codigo de idioma
-        return libroRepository.findAll().stream()
+        return libroRepository.findByIdioma(codigoIdioma).stream()
                 .map(MaperPersistence::fromLibroEntityToLibro)
                 .toList();
     }
