@@ -79,8 +79,7 @@ public class LiteraluraAdapter implements Literalura {
     //Este metodo es para hacer consultas externas a otra API
     @Override
     public List<Libro> listarLibros(String codigoIdioma) {
-        List<Libro> libros = peticionAbs.buscarLibroPorIdioma(codigoIdioma);
-        return libros;
+        return libroAbs.listarLibros(codigoIdioma);
     }
 
     @Override
