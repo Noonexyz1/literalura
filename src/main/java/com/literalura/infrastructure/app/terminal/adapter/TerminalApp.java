@@ -57,9 +57,17 @@ public class TerminalApp {
         //Esta es la forma correcta para utilizar SERVICIOS con opciones que mostrar
         System.out.println("Ingrese el nombre del Libro:");
         String nombreLibro = new Scanner(System.in).nextLine();
-        Libro libro = this.literalura.buscarLibro(nombreLibro);
-        List<Autor> listaAutores = this.literalura.listarAutoresPorLibro(libro);
-        this.mostrarLibroFormat(libro, listaAutores);
+
+        try {
+            Libro libro = this.literalura.buscarLibro(nombreLibro);
+            List<Autor> listaAutores = this.literalura.listarAutoresPorLibro(libro);
+            this.mostrarLibroFormat(libro, listaAutores);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        // Despues del try, este codigo siempre se ejecuta :D, habiendo o no una exception
+        System.out.println("Esta parte del codigo siempre se ejecuta, si hay no no hay excepcion que controlar");
+
     }
 
     public void listarLibros() {

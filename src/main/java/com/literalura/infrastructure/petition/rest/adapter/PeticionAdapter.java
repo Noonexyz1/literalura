@@ -5,6 +5,7 @@ import com.literalura.domain.model.Autor;
 import com.literalura.domain.model.Libro;
 import com.literalura.infrastructure.petition.rest.data.LibroData;
 import com.literalura.infrastructure.petition.rest.data.ResultData;
+import com.literalura.infrastructure.petition.rest.exception.LibroNoEncontradoException;
 import com.literalura.infrastructure.petition.rest.service.ConvierteDatos;
 import com.literalura.infrastructure.petition.rest.utils.MaperPeticion;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +48,11 @@ public class PeticionAdapter implements PeticionAbs {
                 })
                 .findFirst();
 
-        //Mapeamos
+        //Comprobamos si existe este valor
+        if (libroEncontrado.isEmpty()) {
+            throw new LibroNoEncontradoException("Libro no encontrado");
+        }
+
         Libro libro = MaperPeticion.fromLibroDataToLibro(libroEncontrado.get());
 
         //Retornamos el valor

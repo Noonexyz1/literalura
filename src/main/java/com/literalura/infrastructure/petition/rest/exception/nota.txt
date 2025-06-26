@@ -1,0 +1,6 @@
+Pongo un paquete de exception y en esta una clase de excepcion porque si hacemos
+una peticion a recursos externo siempre puede haber una execption, y entonces
+cualquier clase o codigo de el paquete infrastructure la puede usar para luego hacer lo que es pertinente
+
+Asi pues, toddo esto se queda en la capa de infrastructure y las exepciones no pasan por
+el paquete de dominio, porque para el dominio toddo es limpio y asi deberia ser.
