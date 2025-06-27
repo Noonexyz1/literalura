@@ -1,0 +1,3 @@
+Aqui estan las excepciones que surgen den la capa de dominio
+como por ejemplo condiciones de validaciones de atributos en los
+metodos

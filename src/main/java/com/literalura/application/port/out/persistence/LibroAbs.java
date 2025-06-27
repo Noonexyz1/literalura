@@ -9,4 +9,5 @@ public interface LibroAbs {
     Libro resgistrarLibro(Libro libro);
     List<Libro> listarLibros();
     List<Libro> listarLibros(String codigoIdioma);
+    Libro buscarLibroPorTitulo(String titulo);
 }

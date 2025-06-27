@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface LibroRepository extends JpaRepository<LibroEntity, Long> {
     List<LibroEntity> findByIdioma(String codigoIdioma);
+    LibroEntity findByTitulo(String titulo);
 }

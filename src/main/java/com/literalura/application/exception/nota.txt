@@ -1,0 +1,2 @@
+Este paquete esta para las distintas excepciones que pueden surgir en
+la applicacion y o implementancion de los casos de uso

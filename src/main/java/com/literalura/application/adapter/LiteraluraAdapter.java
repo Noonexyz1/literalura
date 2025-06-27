@@ -1,5 +1,6 @@
 package com.literalura.application.adapter;
 
+import com.literalura.application.exception.LibroExistenteException;
 import com.literalura.application.port.in.Literalura;
 import com.literalura.application.port.out.persistence.AutorAbs;
 import com.literalura.application.port.out.persistence.LibroAbs;
@@ -38,6 +39,13 @@ public class LiteraluraAdapter implements Literalura {
     public Libro buscarLibro(String tituloLibro) {
         //Peticion a un sistema externo alguno API
         Libro libro = peticionAbs.buscarLibro(tituloLibro);
+
+        //Verificamos si el libro ya ha sido registrado
+        Libro libroEncontrado = this.libroAbs.buscarLibroPorTitulo(libro.getTitulo());
+        if (libroEncontrado.getTitulo().equals(libro.getTitulo())) {
+            //Exception de applicacion
+            throw new LibroExistenteException("Este libro ya esta registrado");
+        }
 
         //Persistimos en algun lugar
         Libro libroRegistrado = libroAbs.resgistrarLibro(libro);
